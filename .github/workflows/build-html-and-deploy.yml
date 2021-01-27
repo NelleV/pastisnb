@@ -23,3 +23,11 @@ jobs:
           python-version: 3.8
           environment-file: environment.yml
 
+      - name: Install the latest version of PASTIS
+        shell: bash -l {0}
+        run: pip install git+https://github.com/hiclib/pastis.git@master
+
+      - name: Build the jupyter book
+        shell: bash -l {0}
+        run: jb build scripts
+

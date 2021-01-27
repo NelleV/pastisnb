@@ -1,0 +1,31 @@
+title: pastis-nb
+author: Nelle Varoquaux, William S. Noble, JP. Vert
+
+description: >-
+    All the steps to reproduce the results of the pastis-nb paper
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks           : cache
+
+#######################################################################################
+# HTML-specific settings
+html:
+  home_page_in_navbar         : false
+
+# #######################################################################################
+# Interact link settings
+notebook_interface            : "notebook"
+
+#######################################################################################
+# Launch button settings
+repository:
+  url                         : https://github.com/NelleV/pastisnb
+  path_to_book                : "scripts"
+
+binder:
+  binderhub_url               : "https://mybinder.org"
+  text                        : "Launch binder"
+
+

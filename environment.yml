@@ -13,3 +13,4 @@ dependencies:
         - jupyter-book
         - iced
         - pastis
+        - joblib
