@@ -4,7 +4,7 @@ on:
     - cron: '0 0 * * *'
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-html-and-deploy:
@@ -22,6 +22,7 @@ jobs:
           miniconda-version: 'latest'
           python-version: 3.8
           environment-file: environment.yml
+          activate-environment: pastisnb
 
       - name: Install the latest version of PASTIS
         shell: bash -l {0}
@@ -30,4 +31,12 @@ jobs:
       - name: Build the jupyter book
         shell: bash -l {0}
         run: jb build scripts
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GHPAGES }}
+          BRANCH: gh-pages
+          FOLDER: scripts/_build/html
+          CLEAN: true
 
