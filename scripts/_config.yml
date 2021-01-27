@@ -27,5 +27,4 @@ repository:
 binder:
   binderhub_url               : "https://mybinder.org"
   text                        : "Launch binder"
-
-
+  branch                      : "main"
