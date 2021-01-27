@@ -26,7 +26,12 @@ jobs:
 
       - name: Install the latest version of PASTIS
         shell: bash -l {0}
-        run: pip install git+https://github.com/hiclib/pastis.git@master
+        run: |
+            pushd /tmp
+            git clone https://github.com/hiclib/pastis.git
+            cd pastis
+            make install
+            popd
 
       - name: Build the jupyter book
         shell: bash -l {0}
