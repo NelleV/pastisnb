@@ -35,7 +35,10 @@ jobs:
 
       - name: Build the jupyter book
         shell: bash -l {0}
-        run: jb build scripts
+        run: |
+            pushd scripts
+            jb build docs
+            popd
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
