@@ -17,43 +17,121 @@ import os
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from pastis import dispersion
-from sklearn.externals.joblib import Memory
+from pastis import _dispersion as dispersion
 ```
 
 ```{code-cell} python3
-mem = Memory(".joblib")
+from pastis import fastio
+from iced import io
+import iced
+
+def load(filename, normalize=True, bias=None):
+    try:
+        lengths = io.load_lengths(filename.replace(".matrix", ".bed"))
+    except IOError:
+        lengths = io.load_lengths(filename.replace(".matrix", "_abs.bed"))
+
+    counts = io.load_counts(filename, lengths=lengths)
+
+    # Remove the diagonal and remove 0 from matrix
+    counts.setdiag(0)
+    counts = counts.tocsr()
+    counts.eliminate_zeros()
+    counts = counts.tocoo()
+
+    perc_filter = {"/1mb": 0.01,
+                   "/500kb": 0.02,
+                   "/250kb": 0.03,
+                   "/200kb": 0.04,
+                   "/100kb": 0.05,
+                   "10000.": 0.04,
+                   "40000": 0.04,
+                   "/50kb": 0.06}
+
+    if normalize and bias is not None:
+        bias = np.loadtxt(bias)
+
+        # First, filter out loci that have a bias equal to nan.
+        counts = counts.tocsr()
+        counts = iced.filter._filter_csr(counts, np.isnan(bias))
+        normed = counts.copy()
+        # Second, normalize the remaining counts with the bias vector provided
+        bias[np.isnan(bias)] = 1
+        normed = iced.normalization._update_normalization_csr(
+            normed,
+            bias.flatten())
+    elif normalize:
+        print("Normalizing")
+        for k, v in perc_filter.items():
+            if k in filename:
+                print("Filtering", v)
+
+                sum_ax = counts.sum(axis=0).flatten() + \
+                    counts.sum(axis=1).flatten()
+                p = float((sum_ax == 0).sum()) / counts.shape[0]
+
+                counts = iced.filter.filter_low_counts(
+                    counts, percentage=(p + v),
+                    sparsity=False)
+                break
+        counts = counts.tocsr()
+        counts.eliminate_zeros()
+        normed, bias = iced.normalization.ICE_normalization(
+            counts, max_iter=300,
+            output_bias=True)
+    else:
+        bias = None
+        normed = counts
+
+    counts.setdiag(0)
+    counts = counts.tocsr()
+    counts.eliminate_zeros()
+    counts = counts.tocoo()
+    normed.setdiag(0)
+    normed = normed.tocsr()
+    normed.eliminate_zeros()
+    normed = normed.tocoo()
+    if bias is not None:
+        bias[np.isnan(bias)] = 1
+        bias = bias.flatten()
+    else:
+        bias = np.ones(normed.shape[0])
+
+    return counts, normed, lengths, bias
+```
+
+
+```{code-cell} python3
 
 matplotlib.rcParams['xtick.direction'] = 'out'
 matplotlib.rcParams['ytick.direction'] = 'out'
 matplotlib.rcParams["axes.labelsize"] = "small"
 matplotlib.rcParams["xtick.labelsize"] = "x-small"
 matplotlib.rcParams["ytick.labelsize"] = "x-small"
-matplotlib.rcParams["text.usetex"] = True
 
 markers = ["d", ">", ".", "8", "*"]
-filenames = ["../../data/sexton2012/all_10000_raw.matrix",
-             "../../data/feng2014/athaliana_40000_raw.matrix",
-             "../../data/rao2014/100kb/HIC_075_100000_chr10.matrix",
-             "../../data/duan2009/duan.SC.10000.raw.matrix",
-             "../../data/scerevisiaeve2015/counts.matrix",
+filenames = [#"../../../data/sexton2012/all_10000_raw.matrix",
+             #"../../../data/feng2014/athaliana_40000_raw.matrix",
+             #"../../../data/rao2014/100kb/HIC_075_100000_chr10.matrix",
+             "../../../data/duan2009/duan.SC.10000.raw.matrix",
+             "../../../data/scerevisiaeve2015/counts.matrix",
              ]
 
-legends = [r"\textit{D. melanogaster}",
-           r"\textit{A. thaliana}",
-           r"\textit{H. sapiens}",
-           r"\textit{S. cerevisiae}",
-           r"Volume exclusion"]
+legends = [#"D. melanogaster",
+           #"A. thaliana",
+           #"H. sapiens",
+           "S. cerevisiae",
+           "Volume exclusion"]
 
 widerange = np.exp(np.arange(np.log(1e-1), np.log(1e7), 0.01))
-fig, ax = plt.subplots(figsize=(7.007874 / 2, 3))
+fig, ax = plt.subplots()
 fig.subplots_adjust(left=0.2, top=0.95, bottom=0.2)
 legend_markers = []
 for i, filename in enumerate(filenames):
     normalize = True
     if "scerevisiaeve2015" in filename:
         normalize=False
-    counts, normed, lengths, bias = mem.cache(utils.load)(
+    counts, normed, lengths, bias = load(
         filename, normalize=normalize)
     mean, var = dispersion._compute_unbiased_mean_variance(
         counts,
@@ -71,8 +149,8 @@ ax.set_xscale("log")
 ax.set_yscale("log")
 
 le = ax.legend(legend_markers, legends, loc=4, fontsize="x-small")
-ax.set_xlabel(r"\textbf{Mean}", fontsize="small", fontweight="bold")
-ax.set_ylabel(r"\textbf{Variance}", fontsize="small", fontweight="bold")
+ax.set_xlabel(r"Mean", fontsize="small", fontweight="bold")
+ax.set_ylabel(r"Variance", fontsize="small", fontweight="bold")
 
 ax.plot(np.arange(1e-1, 1e7, 1e6),
         np.arange(1e-1, 1e7, 1e6),
