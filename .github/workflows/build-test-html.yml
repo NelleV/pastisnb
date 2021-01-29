@@ -1,4 +1,4 @@
-name: Build HTML and Deploy to gh-pages
+name: Build HTML from jupyter books and run partial pipeline
 on:
   schedule:
     - cron: '0 0 * * *'
