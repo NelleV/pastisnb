@@ -47,7 +47,7 @@ for i, filename in enumerate(filenames):
         normalize=False
     counts, normed, lengths, bias = load(
         filename, normalize=normalize)
-    mean, var = dispersion._compute_unbiased_mean_variance(
+    _, mean, var, _ = dispersion._compute_unbiased_mean_variance(
         counts,
         lengths,
         bias=bias)
@@ -137,12 +137,12 @@ f.set_linewidth(0.5)
 During handling of the above exception, another exception occurred:
 
 [0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-3-bc312630432f>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-3-1ff3205c5871>[0m in [0;36m<module>[0;34m[0m
 [1;32m     27[0m     [0;32mif[0m [0;34m"scerevisiaeve2015"[0m [0;32min[0m [0mfilename[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 [1;32m     28[0m         [0mnormalize[0m[0;34m=[0m[0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
 [0;32m---> 29[0;31m     counts, normed, lengths, bias = load(
 [0m[1;32m     30[0m         filename, normalize=normalize)
-[1;32m     31[0m     mean, var = dispersion._compute_unbiased_mean_variance(
+[1;32m     31[0m     _, mean, var, _ = dispersion._compute_unbiased_mean_variance(
 
 [0;32m<ipython-input-2-d16b61f8aaa1>[0m in [0;36mload[0;34m(filename, normalize, bias)[0m
 [1;32m      7[0m         [0mlengths[0m [0;34m=[0m [0mio[0m[0;34m.[0m[0mload_lengths[0m[0;34m([0m[0mfilename[0m[0;34m.[0m[0mreplace[0m[0;34m([0m[0;34m".matrix"[0m[0;34m,[0m [0;34m".bed"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
