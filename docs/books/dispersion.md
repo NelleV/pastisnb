@@ -133,7 +133,7 @@ for i, filename in enumerate(filenames):
         normalize=False
     counts, normed, lengths, bias = load(
         filename, normalize=normalize)
-    mean, var = dispersion._compute_unbiased_mean_variance(
+    _, mean, var, _ = dispersion._compute_unbiased_mean_variance(
         counts,
         lengths,
         bias=bias)
