@@ -36,15 +36,14 @@ jobs:
       - name: Build the jupyter book
         shell: bash -l {0}
         run: |
-            pushd scripts
-            jupyter-book build docs
+            pushd docs
+            jupyter-book build books
             touch _build/html/.nojekyll
-            popd
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: scripts/_build/html
+          FOLDER: docs/_build/html
           CLEAN: true

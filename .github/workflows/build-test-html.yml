@@ -39,7 +39,13 @@ jobs:
       - name: Build the jupyter book
         shell: bash -l {0}
         run: |
+            pushd docs
+            jupyter-book build books
+            popd
+
+      - name: Run partial pipeline
+        shell: bash -l {0}
+        run: |
             pushd scripts
-            jupyter-book build docs
-            touch _build/html/.nojekyll
+            make partial
             popd
