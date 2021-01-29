@@ -17,55 +17,196 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import os
-import matplotlib
-import matplotlib.pyplot as plt
-import numpy as np
-from pastis import dispersion
-from sklearn.externals.joblib import Memory
+matplotlib.rcParams['xtick.direction'] = 'out'
+matplotlib.rcParams['ytick.direction'] = 'out'
+matplotlib.rcParams["axes.labelsize"] = "small"
+matplotlib.rcParams["xtick.labelsize"] = "x-small"
+matplotlib.rcParams["ytick.labelsize"] = "x-small"
+
+markers = ["d", ">", ".", "8", "*"]
+filenames = [#"../../../data/sexton2012/all_10000_raw.matrix",
+             #"../../../data/feng2014/athaliana_40000_raw.matrix",
+             #"../../../data/rao2014/100kb/HIC_075_100000_chr10.matrix",
+             "../../../data/duan2009/duan.SC.10000.raw.matrix",
+             "../../../data/scerevisiaeve2015/counts.matrix",
+             ]
+
+legends = [#"D. melanogaster",
+           #"A. thaliana",
+           #"H. sapiens",
+           "S. cerevisiae",
+           "Volume exclusion"]
+
+widerange = np.exp(np.arange(np.log(1e-1), np.log(1e7), 0.01))
+fig, ax = plt.subplots()
+fig.subplots_adjust(left=0.2, top=0.95, bottom=0.2)
+legend_markers = []
+for i, filename in enumerate(filenames):
+    normalize = True
+    if "scerevisiaeve2015" in filename:
+        normalize=False
+    counts, normed, lengths, bias = load(
+        filename, normalize=normalize)
+    mean, var = dispersion._compute_unbiased_mean_variance(
+        counts,
+        lengths,
+        bias=bias)
+    if "rao" in filename:
+        zorder = 5
+    else:
+        zorder = 10
+    s = ax.scatter(mean, var, linewidth=0, marker=markers[i],
+                   s=20, zorder=zorder)
+    legend_markers.append(s)
+
+ax.set_xscale("log")
+ax.set_yscale("log")
+
+le = ax.legend(legend_markers, legends, loc=4, fontsize="x-small")
+ax.set_xlabel(r"Mean", fontsize="small", fontweight="bold")
+ax.set_ylabel(r"Variance", fontsize="small", fontweight="bold")
+
+ax.plot(np.arange(1e-1, 1e7, 1e6),
+        np.arange(1e-1, 1e7, 1e6),
+        linewidth=1,
+        linestyle="--", color=(0, 0, 0))
+
+ax.grid("off")
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
+
+ax.grid(which="major", axis="y", linewidth=0.75, linestyle="-",
+        color="0.7")
+f = le.get_frame()
+f.set_linewidth(0.5)
+
 
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-1-a71c76d0bad7>[0m in [0;36m<module>[0;34m[0m
-[1;32m      3[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0;32mimport[0m [0mnumpy[0m [0;32mas[0m [0mnp[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 5[0;31m [0;32mfrom[0m [0mpastis[0m [0;32mimport[0m [0mdispersion[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      6[0m [0;32mfrom[0m [0msklearn[0m[0;34m.[0m[0mexternals[0m[0;34m.[0m[0mjoblib[0m [0;32mimport[0m [0mMemory[0m[0;34m[0m[0;34m[0m[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-2-d16b61f8aaa1>[0m in [0;36mload[0;34m(filename, normalize, bias)[0m
+[1;32m      6[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m         [0mlengths[0m [0;34m=[0m [0mio[0m[0;34m.[0m[0mload_lengths[0m[0;34m([0m[0mfilename[0m[0;34m.[0m[0mreplace[0m[0;34m([0m[0;34m".matrix"[0m[0;34m,[0m [0;34m".bed"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m     [0;32mexcept[0m [0mIOError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pastis/__init__.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mconfig[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      2[0m [0;32mfrom[0m [0;34m.[0m[0mio[0m [0;32mimport[0m [0mwrite[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 3[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mexternals[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      4[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mfastio[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0malgorithms[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/iced/io/_io_pandas.py[0m in [0;36mload_lengths[0;34m(filename, return_base)[0m
+[1;32m     91[0m     """
+[0;32m---> 92[0;31m     [0mdata[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0msep[0m[0;34m=[0m[0;34m"\t"[0m[0;34m,[0m [0mcomment[0m[0;34m=[0m[0;34m"#"[0m[0;34m,[0m [0mheader[0m[0;34m=[0m[0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     93[0m     [0mdata[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0mvalues[0m[0;34m[0m[0;34m[0m[0m
 
-[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pastis/externals/__init__.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0miced[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0;32mimport[0m [0mwarnings[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m warnings.warn(
-[1;32m      4[0m     [0;34m"This module is deprecated. Please use and install iced directly."[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m     DeprecationWarning) 
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
+[1;32m    604[0m [0;34m[0m[0m
+[0;32m--> 605[0;31m     [0;32mreturn[0m [0m_read[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    606[0m [0;34m[0m[0m
 
-[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pastis/externals/iced/__init__.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      2[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mfilter[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mio[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 4[0;31m [0;32mfrom[0m [0;34m.[0m [0;32mimport[0m [0mdatasets[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      5[0m [0;34m[0m[0m
-[1;32m      6[0m [0m__version__[0m [0;34m=[0m [0;34m"0.5.2"[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    456[0m     [0;31m# Create the parser.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 457[0;31m     [0mparser[0m [0;34m=[0m [0mTextFileReader[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    458[0m [0;34m[0m[0m
 
-[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pastis/externals/iced/datasets/__init__.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mfrom[0m [0;34m.[0m[0mbase[0m [0;32mimport[0m [0mclear_data_home[0m[0;34m,[0m [0mget_data_home[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0;32mfrom[0m [0;34m.[0m[0mbase[0m [0;32mimport[0m [0mload_sample_yeast[0m[0;34m,[0m [0mload_sample_cancer[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m    813[0m [0;34m[0m[0m
+[0;32m--> 814[0;31m         [0mself[0m[0;34m.[0m[0m_engine[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mengine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    815[0m [0;34m[0m[0m
 
-[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pastis/externals/iced/datasets/base.py[0m in [0;36m<module>[0;34m[0m
-[1;32m      5[0m [0;32mimport[0m [0mshutil[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      6[0m [0;34m[0m[0m
-[0;32m----> 7[0;31m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      8[0m [0;32mfrom[0m [0;34m.[0m[0;34m.[0m [0;32mimport[0m [0mio[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      9[0m [0;34m[0m[0m
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m_make_engine[0;34m(self, engine)[0m
+[1;32m   1044[0m         [0;31m# error: Too many arguments for "ParserBase"[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1045[0;31m         [0;32mreturn[0m [0mmapping[0m[0;34m[[0m[0mengine[0m[0;34m][0m[0;34m([0m[0mself[0m[0;34m.[0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mself[0m[0;34m.[0m[0moptions[0m[0;34m)[0m  [0;31m# type: ignore[call-arg][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1046[0m [0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'pandas'
-ModuleNotFoundError: No module named 'pandas'
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, src, **kwds)[0m
+[1;32m   1861[0m         [0;31m# open handles[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1862[0;31m         [0mself[0m[0;34m.[0m[0m_open_handles[0m[0;34m([0m[0msrc[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1863[0m         [0;32massert[0m [0mself[0m[0;34m.[0m[0mhandles[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m_open_handles[0;34m(self, src, kwds)[0m
+[1;32m   1356[0m         """
+[0;32m-> 1357[0;31m         self.handles = get_handle(
+[0m[1;32m   1358[0m             [0msrc[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/common.py[0m in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    641[0m             [0;31m# Encoding[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 642[0;31m             handle = open(
+[0m[1;32m    643[0m                 [0mhandle[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../../../data/duan2009/duan.SC.10000.raw.bed'
+
+During handling of the above exception, another exception occurred:
+
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m<ipython-input-3-bc312630432f>[0m in [0;36m<module>[0;34m[0m
+[1;32m     27[0m     [0;32mif[0m [0;34m"scerevisiaeve2015"[0m [0;32min[0m [0mfilename[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     28[0m         [0mnormalize[0m[0;34m=[0m[0;32mFalse[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 29[0;31m     counts, normed, lengths, bias = load(
+[0m[1;32m     30[0m         filename, normalize=normalize)
+[1;32m     31[0m     mean, var = dispersion._compute_unbiased_mean_variance(
+
+[0;32m<ipython-input-2-d16b61f8aaa1>[0m in [0;36mload[0;34m(filename, normalize, bias)[0m
+[1;32m      7[0m         [0mlengths[0m [0;34m=[0m [0mio[0m[0;34m.[0m[0mload_lengths[0m[0;34m([0m[0mfilename[0m[0;34m.[0m[0mreplace[0m[0;34m([0m[0;34m".matrix"[0m[0;34m,[0m [0;34m".bed"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m     [0;32mexcept[0m [0mIOError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 9[0;31m         [0mlengths[0m [0;34m=[0m [0mio[0m[0;34m.[0m[0mload_lengths[0m[0;34m([0m[0mfilename[0m[0;34m.[0m[0mreplace[0m[0;34m([0m[0;34m".matrix"[0m[0;34m,[0m [0;34m"_abs.bed"[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     10[0m [0;34m[0m[0m
+[1;32m     11[0m     [0mcounts[0m [0;34m=[0m [0mio[0m[0;34m.[0m[0mload_counts[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0mlengths[0m[0;34m=[0m[0mlengths[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/iced/io/_io_pandas.py[0m in [0;36mload_lengths[0;34m(filename, return_base)[0m
+[1;32m     90[0m     [0mlengths[0m [0;34m:[0m [0mthe[0m [0mlengths[0m [0mof[0m [0meach[0m [0mchromosomes[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     91[0m     """
+[0;32m---> 92[0;31m     [0mdata[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mread_csv[0m[0;34m([0m[0mfilename[0m[0;34m,[0m [0msep[0m[0;34m=[0m[0;34m"\t"[0m[0;34m,[0m [0mcomment[0m[0;34m=[0m[0;34m"#"[0m[0;34m,[0m [0mheader[0m[0;34m=[0m[0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     93[0m     [0mdata[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0mvalues[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     94[0m     _, idx, lengths = np.unique(data[:, 0], return_counts=True,
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
+[1;32m    603[0m     [0mkwds[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0mkwds_defaults[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    604[0m [0;34m[0m[0m
+[0;32m--> 605[0;31m     [0;32mreturn[0m [0m_read[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    606[0m [0;34m[0m[0m
+[1;32m    607[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    455[0m [0;34m[0m[0m
+[1;32m    456[0m     [0;31m# Create the parser.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 457[0;31m     [0mparser[0m [0;34m=[0m [0mTextFileReader[0m[0;34m([0m[0mfilepath_or_buffer[0m[0;34m,[0m [0;34m**[0m[0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    458[0m [0;34m[0m[0m
+[1;32m    459[0m     [0;32mif[0m [0mchunksize[0m [0;32mor[0m [0miterator[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m    812[0m             [0mself[0m[0;34m.[0m[0moptions[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m [0;34m=[0m [0mkwds[0m[0;34m[[0m[0;34m"has_index_names"[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m    813[0m [0;34m[0m[0m
+[0;32m--> 814[0;31m         [0mself[0m[0;34m.[0m[0m_engine[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_make_engine[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mengine[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    815[0m [0;34m[0m[0m
+[1;32m    816[0m     [0;32mdef[0m [0mclose[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m_make_engine[0;34m(self, engine)[0m
+[1;32m   1043[0m             )
+[1;32m   1044[0m         [0;31m# error: Too many arguments for "ParserBase"[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1045[0;31m         [0;32mreturn[0m [0mmapping[0m[0;34m[[0m[0mengine[0m[0;34m][0m[0;34m([0m[0mself[0m[0;34m.[0m[0mf[0m[0;34m,[0m [0;34m**[0m[0mself[0m[0;34m.[0m[0moptions[0m[0;34m)[0m  [0;31m# type: ignore[call-arg][0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1046[0m [0;34m[0m[0m
+[1;32m   1047[0m     [0;32mdef[0m [0m_failover_to_python[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m__init__[0;34m(self, src, **kwds)[0m
+[1;32m   1860[0m [0;34m[0m[0m
+[1;32m   1861[0m         [0;31m# open handles[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1862[0;31m         [0mself[0m[0;34m.[0m[0m_open_handles[0m[0;34m([0m[0msrc[0m[0;34m,[0m [0mkwds[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1863[0m         [0;32massert[0m [0mself[0m[0;34m.[0m[0mhandles[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1864[0m         [0;32mfor[0m [0mkey[0m [0;32min[0m [0;34m([0m[0;34m"storage_options"[0m[0;34m,[0m [0;34m"encoding"[0m[0;34m,[0m [0;34m"memory_map"[0m[0;34m,[0m [0;34m"compression"[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/parsers.py[0m in [0;36m_open_handles[0;34m(self, src, kwds)[0m
+[1;32m   1355[0m         [0mLet[0m [0mthe[0m [0mreaders[0m [0mopen[0m [0mIOHanldes[0m [0mafter[0m [0mthey[0m [0mare[0m [0mdone[0m [0;32mwith[0m [0mtheir[0m [0mpotential[0m [0mraises[0m[0;34m.[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1356[0m         """
+[0;32m-> 1357[0;31m         self.handles = get_handle(
+[0m[1;32m   1358[0m             [0msrc[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1359[0m             [0;34m"r"[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda3/envs/pastisnb/lib/python3.9/site-packages/pandas/io/common.py[0m in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    640[0m                 [0merrors[0m [0;34m=[0m [0;34m"replace"[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    641[0m             [0;31m# Encoding[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 642[0;31m             handle = open(
+[0m[1;32m    643[0m                 [0mhandle[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    644[0m                 [0mioargs[0m[0;34m.[0m[0mmode[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '../../../data/duan2009/duan.SC.10000.raw_abs.bed'
+FileNotFoundError: [Errno 2] No such file or directory: '../../../data/duan2009/duan.SC.10000.raw_abs.bed'
 
