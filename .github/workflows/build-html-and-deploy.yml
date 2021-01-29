@@ -37,7 +37,7 @@ jobs:
         shell: bash -l {0}
         run: |
             pushd scripts
-            jb build docs
+            jupyter-book build docs
             touch _build/html/.nojekyll
             popd
 
