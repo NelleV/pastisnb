@@ -15,3 +15,4 @@ dependencies:
         - pastis
         - joblib
         - cython
+        - pandas
