@@ -3,8 +3,8 @@ import numpy as np
 import os
 from glob import glob
 import argparse
-from pastis import _dispersion as dispersion
-from minorswing._inference import negative_binomial_structure
+from pastis import dispersion
+from pastis.optimization import negative_binomial_structure
 
 from utils import load
 
@@ -40,12 +40,6 @@ try:
 except OSError:
     pass
 
-# FIXME should be any list, not only adjacent chromosomes
-if args.chromosomes is not None:
-    if range(args.chromosomes[0],
-             args.chromosomes[-1] + 1) != args.chromosomes:
-        raise NotImplementedError
-
 
 counts, normed, lengths, bias = load(args.filename, normalize=args.normalize,
                                      bias=args.bias)
@@ -54,17 +48,10 @@ counts, normed, lengths, bias = load(args.filename, normalize=args.normalize,
 random_state = np.random.RandomState(args.seed)
 
 # NB inference
-if dispersion_type == "pol":
-    dispersion_ = dispersion.ExponentialDispersion(
-        degree=2)
-elif dispersion_type == "log":
-    dispersion_ = dispersion.ExponentialDispersion(
-        degree=1)
-else:
-    dispersion_ = dispersion.ExponentialDispersion(
-        degree=0)
-mean, variance, weights = dispersion.compute_mean_variance(
-    counts, lengths, bias=bias, return_num_data_points=True)
+dispersion_ = dispersion.ExponentialDispersion(
+    degree=0)
+_, mean, variance, weights = dispersion.compute_mean_variance(
+    counts, lengths, bias=bias)
 dispersion_.fit(mean, variance, sample_weights=(weights**0.5))
 
 
@@ -74,26 +61,9 @@ if args.use_zero_counts:
     algo = algo + "0"
 if args.nb2:
     algo = algo + "2"
-if args.weighted:
-    algo = algo + "w"
 
-if args.dispersion_type == "cst":
-    algo = algo + "cst"
-elif dispersion_type == "log":
-    algo = algo + "log"
-
-# Computes weights if needed
-if args.weighted:
-    num_intra = (lengths ** 2).sum()
-    total_number_pairs = (lengths.sum() ** 2)
-    weights = (float(num_intra) / total_number_pairs)**2
-    if weights > 1:
-        weights = None
-else:
-    weights = None
-
+algo = algo + "cst"
 alpha = -3.
-inter_alpha = -3.
 beta = 1
 max_iter = 5
 
@@ -118,15 +88,15 @@ for filename in filenames:
     X_ = X.copy()
     X_[np.isnan(X)] = 0
     if args.nb2:
-        alpha, beta, inter_alpha = np.loadtxt(
+        alpha, beta = np.loadtxt(
             filename.replace("structure.txt",
                              "structure_alpha.txt"))
 
     obj = negative_binomial_structure.negative_binomial_obj(
         X_, counts, alpha=alpha, beta=beta,
-        lengths=lengths, weights=weights,
+        lengths=lengths,
         use_zero_counts=args.use_zero_counts,
-        bias=bias, dispersion=dispersion_, inter_alpha=inter_alpha)
+        bias=bias, dispersion=dispersion_)
 
     print(filename, obj)
     if best_obj is None:

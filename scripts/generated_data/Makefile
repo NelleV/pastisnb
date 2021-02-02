@@ -12,9 +12,23 @@ PARTIAL_MDS_STRUCTURES = $(patsubst %.matrix, %_MDS_structure.txt, $(PARTIAL_TAR
 PARTIAL_PM2_STRUCTURES = $(patsubst %.matrix, %_PM2_structure.txt, $(PARTIAL_TARGETS))
 PARTIAL_UNB02cst_STRUCTURES = $(patsubst %.matrix, %_UNB02cst_structure.txt, $(PARTIAL_TARGETS))
 
+# We would like to compute the errors for the three datasets we've generated.
 ERRORS = errors/cst/dispersion/MDS_RMSD_per_chrom.npy \
 	 errors/cst/dispersion/UNB02cst_RMSD_per_chrom.npy \
-	 errors/cst/dispersion/PM2_RMSD_per_chrom.npy
+	 errors/cst/dispersion/PM2_RMSD_per_chrom.npy \
+	 errors/cst/dispersion/chromSDE_RMSD_per_chrom.npy \
+	 errors/cst/dispersion/ShRec3D_RMSD_per_chrom.npy \
+	 errors/cst/coverage/MDS_RMSD_per_chrom.npy \
+	 errors/cst/coverage/UNB02cst_RMSD_per_chrom.npy \
+	 errors/cst/coverage/PM2_RMSD_per_chrom.npy \
+	 errors/cst/coverage/chromSDE_RMSD_per_chrom.npy \
+	 errors/cst/coverage/ShRec3D_RMSD_per_chrom.npy \
+	 errors/cst/alpha/MDS_RMSD_per_chrom.npy \
+	 errors/cst/alpha/UNB02cst_RMSD_per_chrom.npy \
+	 errors/cst/alpha/PM2_RMSD_per_chrom.npy \
+	 errors/cst/alpha/chromSDE_RMSD_per_chrom.npy \
+	 errors/cst/alpha/ShRec3D_RMSD_per_chrom.npy 
+
 
 all: $(DATA) validation
 
@@ -66,9 +80,16 @@ results/cst/dispersion/%_generated_dataset_99/counts.matrix: ../../data/%.matrix
 ###############################################################################
 # Computing errors
 
-
 errors/cst/dispersion/%_RMSD_per_chrom.npy: compute_errors.py $(wildcard results/cst/dispersion/*/*/*/*_%_*.txt)
 	python compute_errors.py --algo $*
+
+
+errors/cst/alpha/%_RMSD_per_chrom.npy: compute_errors.py $(wildcard results/cst/alpha/*/*/*/*_%_*.txt)
+	python compute_errors.py --algo $* --dataset cst/alpha
+
+errors/cst/coverage/%_RMSD_per_chrom.npy: compute_errors.py $(wildcard results/cst/coverage/*/*/*/*_%_*.txt)
+	python compute_errors.py --algo $* --dataset cst/coverage
+
 
 ###############################################################################
 # Cleaning utilities

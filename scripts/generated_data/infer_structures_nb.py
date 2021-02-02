@@ -4,11 +4,11 @@ import numpy as np
 from numpy.testing import assert_array_equal
 import os
 import argparse
-from minorswing._inference import negative_binomial
-from minorswing._inference import negative_binomial_structure
+from pastis.optimization import negative_binomial
+from pastis.optimization import negative_binomial_structure
 from sklearn.metrics import euclidean_distances
 
-from pastis import _dispersion as dispersion
+from pastis import dispersion
 from utils import load
 
 
@@ -91,19 +91,14 @@ X[np.isnan(X)] = 0
 dispersion_ = dispersion.ExponentialDispersion(
     degree=0)
 
-mean, variance, weights = dispersion.compute_mean_variance(
-    counts, lengths, bias=bias, return_num_data_points=True)
+_, mean, variance, weights = dispersion.compute_mean_variance(
+    counts, lengths, bias=bias)
 dispersion_.fit(mean, variance, sample_weights=(weights**0.5))
 
-weights = None
 alpha = -3
 beta = 1
-inter_alpha = None
 
-if not use_zero_counts:
-    inter_alpha = None
 max_iter = 5
-adjacent_constraints = False
 
 dis = euclidean_distances(X)
 mask = np.triu(np.ones(dis.shape), 1).astype(bool)
@@ -115,42 +110,29 @@ for i in range(max_iter):
     X = negative_binomial_structure.estimate_X(
         counts, alpha, beta, bias=bias,
         lengths=lengths,
-        weights=weights,
         dispersion=dispersion_,
         use_zero_entries=use_zero_counts,
-        adjacent_constraints=adjacent_constraints,
-        ini=X.flatten(),
-        inter_alpha=inter_alpha)
+        ini=X.flatten())
 
-    old_alpha, old_alpha_inter, old_beta = alpha, inter_alpha, beta
     # Skip this if it is the last iteration
+    old_alpha = alpha
     if nb2 and i < max_iter - 1:
         print("Estimating alpha", alpha, "and beta", beta)
-        if inter_alpha is not None:
-            ini = [-3, beta, -3]
-        else:
-            ini = [-3., beta]
+        ini = [-3., beta]
 
         results = negative_binomial.estimate_alpha_beta(
             counts, X, bias=bias,
             ini=np.array(ini),
             lengths=lengths,
-            weights=weights,
             use_zero_entries=use_zero_counts,
-            adjacent_constraints=adjacent_constraints,
             infer_beta=False,
-            dispersion=dispersion_,
-            inter_alpha=inter_alpha)
+            dispersion=dispersion_)
 
-        if inter_alpha is None:
-            alpha, beta = results
-        else:
-            alpha, beta, inter_alpha = results
+        alpha, beta = results
 
-        if ((np.abs(alpha - old_alpha) < 1e-3) and
-            (np.abs(beta - old_beta) < 1e-3)):
+        if np.abs(alpha - old_alpha) < 1e-3:
             break
-    print(alpha, beta, inter_alpha)
+    print(alpha, beta)
 
 mask = (np.array(counts.sum(axis=0)).flatten() +
         np.array(counts.sum(axis=1)).flatten() == 0)
@@ -158,8 +140,6 @@ mask = mask.flatten()
 X_ = X.copy()
 X_[mask] = np.nan
 np.savetxt(outname, X_)
-if inter_alpha is None:
-    inter_alpha = alpha
-np.savetxt(outname.replace(".txt", "_alpha.txt"), [alpha, beta, inter_alpha])
+np.savetxt(outname.replace(".txt", "_alpha.txt"), [alpha, beta])
 
 print("Results written to", outname)
