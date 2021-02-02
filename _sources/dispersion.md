@@ -17,7 +17,7 @@ import os
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from pastis import _dispersion as dispersion
+from pastis import dispersion
 ```
 
 ```{code-cell} python3
@@ -111,10 +111,8 @@ matplotlib.rcParams["ytick.labelsize"] = "x-small"
 
 markers = ["d", ">", ".", "8", "*"]
 filenames = [#"../../../data/sexton2012/all_10000_raw.matrix",
-             #"../../../data/feng2014/athaliana_40000_raw.matrix",
-             #"../../../data/rao2014/100kb/HIC_075_100000_chr10.matrix",
-             "../../../data/duan2009/duan.SC.10000.raw.matrix",
-             "../../../data/scerevisiaeve2015/counts.matrix",
+             "./data/duan2009/duan.SC.10000.raw.matrix",
+             "./data/scerevisiaeve2015/counts.matrix",
              ]
 
 legends = [#"D. melanogaster",
@@ -133,7 +131,7 @@ for i, filename in enumerate(filenames):
         normalize=False
     counts, normed, lengths, bias = load(
         filename, normalize=normalize)
-    _, mean, var, _ = dispersion._compute_unbiased_mean_variance(
+    _, mean, var, _ = dispersion.compute_mean_variance(
         counts,
         lengths,
         bias=bias)
