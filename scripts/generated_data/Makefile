@@ -12,10 +12,13 @@ PARTIAL_MDS_STRUCTURES = $(patsubst %.matrix, %_MDS_structure.txt, $(PARTIAL_TAR
 PARTIAL_PM2_STRUCTURES = $(patsubst %.matrix, %_PM2_structure.txt, $(PARTIAL_TARGETS))
 PARTIAL_UNB02cst_STRUCTURES = $(patsubst %.matrix, %_UNB02cst_structure.txt, $(PARTIAL_TARGETS))
 
+ERRORS = errors/cst/dispersion/MDS_RMSD_per_chrom.npy \
+	 errors/cst/dispersion/UNB02cst_RMSD_per_chrom.npy \
+	 errors/cst/dispersion/PM2_RMSD_per_chrom.npy
 
-all: $(DATA)
+all: $(DATA) validation
 
-partial: $(DATA) $(PARTIAL_MDS_STRUCTURES) $(PARTIAL_UNB02cst_STRUCTURES)
+partial: $(DATA) $(PARTIAL_MDS_STRUCTURES) $(PARTIAL_UNB02cst_STRUCTURES) validation
 
 structures: mds nb02cst pm2
  
@@ -24,6 +27,8 @@ mds: $(MDS_STRUCTURES)
 pm2: $(PM2_STRUCTURES)
 
 nb02cst: $(UNB02cst_STRUCTURES)
+
+validation: $(ERRORS)
 
 
 ###############################################################################
@@ -58,6 +63,15 @@ results/cst/dispersion/%_generated_dataset_99/counts.matrix: ../../data/%.matrix
 	python infer_structures_nb.py $< --seed 5 -u -e --no-normalization
 	python select_best_nb.py $< --no-normalization -u -e
 
+###############################################################################
+# Computing errors
+
+
+errors/cst/dispersion/%_RMSD_per_chrom.npy: compute_errors.py $(wildcard results/cst/dispersion/*/*/*/*_%_*.txt)
+	python compute_errors.py --algo $*
+
+###############################################################################
+# Cleaning utilities
 clean:
 	rm -rf results
 	rm -rf times
