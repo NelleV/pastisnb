@@ -7,5 +7,5 @@ all:
 
 partial:
 	cd dispersion && make partial && cd ..
-	cd generate_data && make partial && cd ..
+	cd generated_data && make partial && cd ..
 
