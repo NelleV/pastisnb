@@ -2,7 +2,7 @@ import os
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from pastis import _dispersion as dispersion
+from pastis import dispersion
 import utils
 from joblib import Memory
 
