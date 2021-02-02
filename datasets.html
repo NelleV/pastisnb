@@ -1,0 +1,2171 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datasets &#8212; pastis-nb</title>
+    
+  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Are contact counts overdispered?" href="dispersion.html" />
+    <link rel="prev" title="pastisnb" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">pastis-nb</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Datasets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dispersion.html">
+   Are contact counts overdispered?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="generate_data.html">
+   Generate some data
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/datasets.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-of-the-datasets-used-in-the-article">
+   Summary of the datasets used in the article
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rao-et-al-2014">
+   Rao et al, 2014
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mb">
+     1mb
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kb">
+     500kb
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     250kb
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     100kb
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     50kb
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="datasets">
+<h1>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary-of-the-datasets-used-in-the-article">
+<h2>Summary of the datasets used in the article<a class="headerlink" href="#summary-of-the-datasets-used-in-the-article" title="Permalink to this headline">¶</a></h2>
+<p>Here is a summary of all the datasets used in the article, with links to the
+HiC-pro format <code class="docutils literal notranslate"><span class="pre">.matrix</span></code> and <code class="docutils literal notranslate"><span class="pre">.bed</span></code> files. The files for Rao et al can be
+found below. Note that some of those datasets are shared in the associated
+<a class="reference external" href="https://github.com/NelleV/pastisnb/">github repository</a>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Publication</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Matrix file</p></th>
+<th class="head"><p>Bed file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Duan et al</p></td>
+<td><p><em>S. cerevisiae</em></p></td>
+<td><p>10kb</p></td>
+<td><p><a class="reference external" href="https://github.com/NelleV/pastisnb/blob/main/data/duan2009/duan.SC.10000.raw.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="https://github.com/NelleV/pastisnb/blob/main/data/duan2009/duan.SC.10000.raw.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Feng et al</p></td>
+<td><p><em>A. thaliana</em></p></td>
+<td><p>40kb</p></td>
+<td><p><a class="reference external" href="https://github.com/NelleV/pastisnb/blob/main/data/feng2014/athaliana_40000_raw.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="https://github.com/NelleV/pastisnb/blob/main/data/feng2014/athaliana_40000_raw.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Sexton et al</p></td>
+<td><p><em>D. melanogaster</em></p></td>
+<td><p>10kb</p></td>
+<td><p><a class="reference external" href="https://github.com/NelleV/pastisnb/blob/main/data/sexton2012/all_10000_raw.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="https://github.com/NelleV/pastisnb/blob/main/data/sexton2012/all_10000_raw.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>varying</p></td>
+<td><p>See below</p></td>
+<td><p>See below</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rao-et-al-2014">
+<h2>Rao et al, 2014<a class="headerlink" href="#rao-et-al-2014" title="Permalink to this headline">¶</a></h2>
+<p>We looked at replicate 75th and 76th of the KBM7 cell-line from Rao et al, at
+different resolution (1mb, 500kb, 250kb, 100kb, 50kb).</p>
+<div class="section" id="mb">
+<h3>1mb<a class="headerlink" href="#mb" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Publication</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Replicate</p></th>
+<th class="head"><p>Chromosome</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Matrix file</p></th>
+<th class="head"><p>Bed file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr01</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr02</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr03</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr04</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr05</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr06</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr07</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr08</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr09</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr10</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr11</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr12</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr13</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr14</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr15</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr16</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr17</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr18</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr19</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr20</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr21</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr22</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_075_1000000_chr22.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr01</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr02</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr03</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr04</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr05</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr06</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr07</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr08</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr09</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr10</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr11</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr12</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr13</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr14</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr15</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr16</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr17</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr18</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr19</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr20</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr21</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr22</p></td>
+<td><p>1mb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/1mb/HIC_076_1000000_chr22.bed">bed</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="kb">
+<h3>500kb<a class="headerlink" href="#kb" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Publication</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Replicate</p></th>
+<th class="head"><p>Chromosome</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Matrix file</p></th>
+<th class="head"><p>Bed file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr01</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr02</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr03</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr04</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr05</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr06</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr07</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr08</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr09</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr10</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr11</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr12</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr13</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr14</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr15</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr16</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr17</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr18</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr19</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr20</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr21</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr22</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_075_500000_chr22.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr01</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr02</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr03</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr04</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr05</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr06</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr07</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr08</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr09</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr10</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr11</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr12</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr13</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr14</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr15</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr16</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr17</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr18</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr19</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr20</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr21</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr22</p></td>
+<td><p>500kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/500kb/HIC_076_500000_chr22.bed">bed</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id1">
+<h3>250kb<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Publication</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Replicate</p></th>
+<th class="head"><p>Chromosome</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Matrix file</p></th>
+<th class="head"><p>Bed file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr01</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr02</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr03</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr04</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr05</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr06</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr07</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr08</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr09</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr10</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr11</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr12</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr13</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr14</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr15</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr16</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr17</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr18</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr19</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr20</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr21</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr22</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_075_250000_chr22.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr01</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr02</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr03</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr04</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr05</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr06</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr07</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr08</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr09</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr10</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr11</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr12</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr13</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr14</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr15</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr16</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr17</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr18</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr19</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr20</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr21</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr22</p></td>
+<td><p>250kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/250kb/HIC_076_250000_chr22.bed">bed</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h3>100kb<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Publication</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Replicate</p></th>
+<th class="head"><p>Chromosome</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Matrix file</p></th>
+<th class="head"><p>Bed file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr01</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr02</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr03</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr04</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr05</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr06</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr07</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr08</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr09</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr10</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr11</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr12</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr13</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr14</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr15</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr16</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr17</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr18</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr19</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr20</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr21</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr22</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_075_100000_chr22.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr01</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr02</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr03</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr04</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr05</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr06</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr07</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr08</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr09</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr10</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr11</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr12</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr13</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr14</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr15</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr16</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr17</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr18</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr19</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr20</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr21</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr22</p></td>
+<td><p>100kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/100kb/HIC_076_100000_chr22.bed">bed</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h3>50kb<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Publication</p></th>
+<th class="head"><p>Organism</p></th>
+<th class="head"><p>Replicate</p></th>
+<th class="head"><p>Chromosome</p></th>
+<th class="head"><p>Resolution</p></th>
+<th class="head"><p>Matrix file</p></th>
+<th class="head"><p>Bed file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr01</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr02</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr03</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr04</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr05</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr06</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr07</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr08</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr09</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr10</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr11</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr12</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr13</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr14</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr15</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr16</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr17</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr18</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr19</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr20</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr21</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>75</p></td>
+<td><p>chr22</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_075_50000_chr22.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr01</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr01.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr01.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr02</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr02.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr02.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr03</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr03.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr03.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr04</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr04.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr04.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr05</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr05.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr05.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr06</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr06.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr06.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr07</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr07.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr07.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr08</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr08.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr08.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr09</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr09.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr09.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr10</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr10.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr10.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr11</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr11.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr11.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr12</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr12.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr12.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr13</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr13.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr13.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr14</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr14.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr14.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr15</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr15.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr15.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr16</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr16.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr16.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr17</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr17.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr17.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr18</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr18.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr18.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr19</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr19.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr19.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr20</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr20.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr20.bed">bed</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr21</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr21.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr21.bed">bed</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Rao et al</p></td>
+<td><p>Human</p></td>
+<td><p>76</p></td>
+<td><p>chr22</p></td>
+<td><p>50kb</p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr22.matrix">matrix</a></p></td>
+<td><p><a class="reference external" href="http://membres-timc.imag.fr/Nelle.Varoquaux/datasets/rao2014/50kb/HIC_076_50000_chr22.bed">bed</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">pastisnb</a>
+    <a class='right-next' id="next-link" href="dispersion.html" title="next page">Are contact counts overdispered?</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Nelle Varoquaux, William S. Noble, JP. Vert<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

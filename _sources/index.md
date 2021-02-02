@@ -26,10 +26,14 @@ of the data (Pastis-PM). We show that the negative binomial inference yields
 more accurate structures on simulated data, and more robust structures than
 other models across real Hi-C replicates and across different resolutions
 
+## Supplementary information and data
 
-**This material is still under construction**
+- [List of datasets & links to matrix/bed files](datasets)
+- [Code to reproduce the paper's figures](https://github.com/NelleV/pastisnb)
+- [Pastis package](https://github.com/hiclib/pastis)
 
-1. Are contact counts overdispersed?
-2. Simulating HiC datasets
-3. Performing the inference with Pastis-NB
+## Contact
+
+For questions about the article and/or this supplementary page please e-mail
+Nelle Varoquaux < nelle dot varoquaux at univ-grenoble-alpes dot edu >.
 
