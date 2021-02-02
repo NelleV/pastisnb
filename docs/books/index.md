@@ -27,9 +27,7 @@ more accurate structures on simulated data, and more robust structures than
 other models across real Hi-C replicates and across different resolutions
 
 
-**This material is still under construction**
+## Contacts
 
-1. Are contact counts overdispersed?
-2. Simulating HiC datasets
-3. Performing the inference with Pastis-NB
+## Reproducing the results of the article
 
