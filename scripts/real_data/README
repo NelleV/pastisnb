@@ -4,3 +4,14 @@ The scripts in this folder are used to assess:
 - stability analysis with respect to replicates
 - stability analysis with respect to resolution
 - whether including 0 contact counts or not yields to better performances.
+
+We've run those experiments on a cluster. We provide the slurm scripts to run
+them:
+
+- launch_all_jobs.sh runs all the jobs on the cluster. These are run as a
+  series of job arrays.
+- the scripts/ folder contains the individual bash scripts.
+
+
+You can also download the results of the 3D inference at
+membres-timc.imag.fr/Nelle.Varoquaux/publications/2020-pastis-nb/real_data_structures.zip
