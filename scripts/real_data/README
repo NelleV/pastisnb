@@ -1,0 +1,6 @@
+# Stability analysis of 3D structure inference
+
+The scripts in this folder are used to assess:
+- stability analysis with respect to replicates
+- stability analysis with respect to resolution
+- whether including 0 contact counts or not yields to better performances.
