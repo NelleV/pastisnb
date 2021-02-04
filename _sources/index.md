@@ -29,6 +29,7 @@ other models across real Hi-C replicates and across different resolutions
 ## Supplementary information and data
 
 - [List of datasets & links to matrix/bed files](datasets)
+- [3D models inferred for different experiments](results)
 - [Code to reproduce the paper's figures](https://github.com/NelleV/pastisnb)
 - [Pastis package](https://github.com/hiclib/pastis)
 
